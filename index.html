@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>《春灯闭园以后》玩家调查攻略</title>
+<style>
+:root{
+  --paper:#d9d0b9;
+  --paper2:#eee6d2;
+  --ink:#29261f;
+  --muted:#766d5d;
+  --red:#8d332a;
+  --blue:#4a5a62;
+  --line:#9f947f;
+  --shadow:#1f1d19;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    linear-gradient(rgba(32,30,25,.15),rgba(32,30,25,.15)),
+    repeating-linear-gradient(0deg,#4a4740 0 2px,#47443e 2px 4px);
+  font-family:"Noto Serif SC","Songti SC","SimSun",serif;
+  line-height:1.8;
+}
+.sheet{
+  width:min(1040px,calc(100% - 30px));
+  margin:32px auto 70px;
+  background:
+    radial-gradient(circle at 16% 7%,rgba(255,255,255,.28),transparent 22%),
+    repeating-linear-gradient(90deg,transparent 0 8px,rgba(62,50,34,.018) 8px 9px),
+    var(--paper);
+  border:1px solid #1f1d18;
+  box-shadow:0 22px 80px rgba(0,0,0,.48);
+}
+.cover{
+  min-height:430px;
+  padding:54px 62px 42px;
+  border-bottom:2px solid var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.cover:after{
+  content:"";
+  position:absolute;
+  width:240px;height:240px;
+  right:-40px;bottom:-55px;
+  border:2px solid rgba(141,51,42,.28);
+  border-radius:50%;
+  box-shadow:inset 0 0 0 18px transparent;
+}
+.eyebrow{
+  font:700 11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;
+  letter-spacing:.16em;
+  color:var(--muted)
+}
+h1{
+  margin:.32em 0 .22em;
+  max-width:770px;
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.02;
+  letter-spacing:-.055em;
+}
+.cover p{
+  max-width:700px;
+  font-size:15px;
+}
+.rednote{
+  display:inline-block;
+  margin-top:24px;
+  border:2px solid var(--red);
+  color:var(--red);
+  padding:7px 13px;
+  transform:rotate(-1.5deg);
+  font:700 12px ui-monospace,Consolas,monospace;
+}
+.tape{
+  position:absolute;
+  width:145px;height:30px;
+  background:rgba(236,224,188,.52);
+  top:27px;right:110px;
+  transform:rotate(8deg);
+  border-left:1px solid rgba(80,70,50,.15);
+  border-right:1px solid rgba(80,70,50,.15)
+}
+nav{
+  padding:15px 62px 17px;
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.1);
+  font-size:13px;
+  position:sticky;top:0;z-index:8;
+  backdrop-filter:blur(7px);
+}
+nav a{
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px dotted #706655;
+  margin-right:16px;
+  white-space:nowrap;
+}
+main{padding:38px 62px 64px}
+section{margin:0 0 50px}
+h2{
+  display:flex;align-items:baseline;gap:12px;
+  font-size:27px;line-height:1.25;
+  margin:0 0 18px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--ink);
+}
+h2 small{
+  font:700 11px ui-monospace,Consolas,monospace;
+  color:var(--red);letter-spacing:.08em
+}
+h3{font-size:18px;margin:25px 0 7px}
+p{margin:.75em 0}
+.lead{font-size:16px}
+.route{
+  padding:14px 18px;
+  margin:18px 0;
+  background:#292824;
+  color:#f0e6d1;
+  border-left:5px solid #a56c37;
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  font-size:13px;
+}
+.clue{
+  margin:18px 0;
+  padding:15px 19px;
+  background:rgba(255,255,255,.22);
+  border-left:4px solid var(--blue);
+  box-shadow:2px 3px 0 rgba(67,59,45,.06);
+}
+.margin-note{
+  margin:18px 0 22px 18px;
+  padding:10px 15px;
+  color:#4d4437;
+  border-left:2px dashed var(--red);
+  font-size:14px;
+  transform:rotate(-.18deg)
+}
+.answer{
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  color:var(--red);font-weight:800;letter-spacing:.03em;
+  border-bottom:2px solid rgba(141,51,42,.3)
+}
+details{
+  margin:13px 0;
+  padding:10px 0;
+  border-top:1px dashed #918570;
+  border-bottom:1px dashed #918570
+}
+summary{cursor:pointer;font-weight:800}
+details[open] summary{color:var(--red)}
+table{
+  width:100%;border-collapse:collapse;margin:14px 0 22px;
+  font-size:14px
+}
+th,td{
+  border-bottom:1px solid #a99e89;
+  padding:8px 8px;text-align:left;vertical-align:top
+}
+th{width:28%;font-weight:800}
+.timeline{
+  margin:16px 0 20px 8px;
+  padding-left:18px;
+  border-left:2px solid var(--ink)
+}
+.timeline div{
+  position:relative;
+  margin:10px 0
+}
+.timeline div:before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  position:absolute;left:-24px;top:.58em
+}
+.cross{
+  text-decoration:line-through;
+  color:#746b5b
+}
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+}
+.paper-slip{
+  background:#eee5cf;
+  border:1px solid #988a72;
+  padding:17px 19px;
+  box-shadow:4px 5px 0 rgba(55,48,38,.08);
+  transform:rotate(.2deg);
+}
+.big-answer{
+  display:block;
+  margin:10px 0;
+  padding:12px 14px;
+  background:#332f28;
+  color:#f0dfbd;
+  font:800 17px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.warning{color:var(--red);font-weight:800}
+.small{font-size:12px;color:var(--muted)}
+footer{
+  border-top:2px solid var(--ink);
+  padding:20px 62px 30px;
+  font-size:12px;color:var(--muted)
+}
+@media(max-width:760px){
+  .sheet{width:100%;margin:0;border:0}
+  .cover,main,nav,footer{padding-left:22px;padding-right:22px}
+  .cover{min-height:auto}
+  .tape{display:none}
+  .two-col{grid-template-columns:1fr}
+  h1{font-size:46px}
+  nav{overflow:auto;white-space:nowrap}
+}
+@media print{
+  body{background:white}
+  .sheet{width:100%;margin:0;box-shadow:none;border:0}
+  nav{display:none}
+  details{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+<header class="cover">
+  <div class="tape"></div>
+  <div class="eyebrow">CHUNDENG / PLAYER'S CASEBOOK / FULL SPOILERS</div>
+  <h1>《春灯闭园以后》<br>玩家调查攻略</h1>
+  <p>我按实际调查思路整理，不把它写成“点这里—输密码—下一页”的流水账。这个游戏真正需要做的是：把二十年前的旧网页、冲印照片、论坛回帖、游客服务记录、工程旧机、城建档案和二十年后的拆除材料拼成同一件事。</p>
+  <span class="rednote">以下内容严重剧透</span>
+</header>
+
+<nav>
+<a href="#s1">新闻</a>
+<a href="#s2">旧站与照片</a>
+<a href="#s3">论坛</a>
+<a href="#s4">游客服务</a>
+<a href="#s5">工程组</a>
+<a href="#s6">城建档案</a>
+<a href="#s7">图纸</a>
+<a href="#s8">施工发现</a>
+<a href="#s9">结局</a>
+</nav>
+
+<main>
+
+<section id="s1">
+<h2><small>01 / 2026</small>先从“水壶”开始，不要先找后台</h2>
+<p class="lead">开局新闻已经把调查范围限定得很清楚：2026 年拆除春灯游乐园旧址时，在魔镜宫后侧的封闭结构区发现刻有“沈荞”名字的旧水壶，2006 年的失踪案因此重新核查。</p>
+<div class="timeline">
+<div>沈荞，2006 年 8 月 19 日在春灯游乐园失踪，当年 11 岁。</div>
+<div>当年的临时员工唐屿曾承认带她走过魔镜宫侧面的员工通道。</div>
+<div>警方当年没有认定唐屿涉案，但旧报道、论坛和后来回忆长期把怀疑集中在他身上。</div>
+</div>
+<p>继续看“水壶之后”的报道，页面会明确提示：2006 年春灯游乐园官网还有部分历史存档，其中<strong>游客相册、失物招领、暴雨当天项目通知</strong>保留了原始更新时间。</p>
+<div class="route">新闻报道 → 春灯游乐园 2006 历史站</div>
+<div class="margin-note">我这里建议先别急着给唐屿定性。新闻里最重要的一句其实是：旧园区多次改建，仅靠旧新闻无法还原她最后走过的路线。</div>
+</section>
+
+<section id="s2">
+<h2><small>02 / 2006 WEB</small>旧站、游客照片与冲印批次</h2>
+<p>进入春灯旧站后，优先翻与 8 月 19 日有关的页面：当天活动/停运信息、游客相册、失物记录。照片不是为了认“凶手”，而是为了确认<strong>谁在什么时间、什么位置真实出现过</strong>。</p>
+<p>相册线索会把你带到旧冲印登记。需要从登记批次里找出 2006 年 8 月 19 日春灯相关的那一批。</p>
+<details open>
+<summary>冲印批次答案</summary>
+<span class="big-answer">SG-060819-087</span>
+<p>只有这一批仍保留 8 张公开低清样片。</p>
+</details>
+<p>这组照片的作用是纠正“所有人都在可靠回忆”的错觉。后面你会看到，证人的记忆、当年的媒体说法和真正的排班/记录并不完全一致。</p>
+</section>
+
+<section id="s3">
+<h2><small>03 / FORUM</small>城西生活网：真正重要的是“旧事旧人”</h2>
+<p>论坛里有大量很像真实县城论坛的闲聊，不要把每条都当谜题。主线需要看的主要是两类帖子：</p>
+<div class="two-col">
+<div class="paper-slip">
+<h3>失踪案旧帖</h3>
+<p>用来对照当年的流言、目击说法以及唐屿为何长期被怀疑。</p>
+</div>
+<div class="paper-slip">
+<h3>旧事旧人</h3>
+<p>重点找游客中心员工<strong>陆婕</strong>的签名、工号和入职时间。相邻回复把账号信息拆开了。</p>
+</div>
+</div>
+<p>游客服务系统的用户名规则是“2 位岗位代码 + 3 位工号”，初始口令是“入职年月”。把论坛里的两条信息拼起来：</p>
+<details open>
+<summary>游客服务系统登录答案</summary>
+<table>
+<tr><th>用户名</th><td><span class="answer">KF017</span></td></tr>
+<tr><th>初始口令</th><td><span class="answer">200407</span></td></tr>
+</table>
+</details>
+<div class="clue">后面的 2026 采访会再次推翻陆婕过去非常肯定的说法：重新核对排班后，她发现案发傍晚其实在北门退票，因此“亲眼见过黄色雨衣”的记忆并不能可靠对应 8 月 19 日。</div>
+</section>
+
+<section id="s4">
+<h2><small>04 / SERVICE_DB</small>游客服务中心：别只搜沈荞的名字</h2>
+<p>登录后是一个 2006 年游客服务中心内部只读系统。页面很多：排班、客诉、失物、退票、天气/急救、交班便笺。</p>
+<p>这一段的核心并不是找到一条“沈荞失踪真相”，而是交叉验证：</p>
+<div class="timeline">
+<div>谁在案发当晚实际值什么班；</div>
+<div>暴雨造成了哪些停运、退票、急救和后场异常；</div>
+<div>游客中心把哪些问题转给了工程组；</div>
+<div>当年的公开说法里有哪些记忆其实与排班、票务记录冲突。</div>
+</div>
+<p>游客服务的转办摘要会把调查方向从“人物证词”推到<strong>工程分区</strong>。这时进入工程组旧机备份才是主线。</p>
+<div class="route">游客服务记录 → 工程转办 → C 区 / 魔镜宫后场</div>
+</section>
+
+<section id="s5">
+<h2><small>05 / ENG-03</small>工程组旧机：C-MIRROR 才是关键目录</h2>
+<p>工程旧机按设备区域存文件，不按事故或人名归档。主页已经提醒玩家：要根据游客服务留下的工程分区去找“现场复核”。</p>
+<p>目录中最重要的是：</p>
+<span class="big-answer">C-MIRROR / 魔镜宫 · 后场 · 侧门</span>
+<p>继续看相关维修/后场资料，会发现 C 区并不是简单的一堵墙，而是经历过改造。纸质工程附件背面还抄着城建档案的三段索引。</p>
+<details open>
+<summary>档案三段索引</summary>
+<table>
+<tr><th>年度段</th><td><span class="answer">03</span></td></tr>
+<tr><th>流水段</th><td><span class="answer">441</span></td></tr>
+<tr><th>分册</th><td><span class="answer">C</span></td></tr>
+</table>
+</details>
+<p>组合成完整档号：</p>
+<span class="big-answer">CH-03-441-C</span>
+</section>
+
+<section id="s6">
+<h2><small>06 / ARCHIVE</small>城建档案：2003 年 C 区改造</h2>
+<p>进入城建档案查询，把上一段的三段索引分别放回年度、流水、分册：</p>
+<div class="route">03 + 441 + C → CH-03-441-C</div>
+<p>正确卷宗题名是<strong>《春灯游乐园 C 区排水与后场检修改造》</strong>，年度 2003。</p>
+<p>工程目录里特别值得注意的项目：</p>
+<table>
+<tr><th>2003-04-11</th><td>施工联系单 07：后场局部构造调整。</td></tr>
+<tr><th>2003-05-03</th><td>竣工说明：最终表达按变更联系单执行。</td></tr>
+<tr><th>2003-05-03</th><td>竣工平面图：最终墙体、门洞和设备位置。</td></tr>
+</table>
+<p>关联档案还给了两张对照图：1999 原始建筑总图、2006 消防备案总图。真正的谜题从这里开始。</p>
+</section>
+
+<section id="s7">
+<h2><small>07 / MAP CHECK</small>图纸题：不要读尺寸，只看“消失的结构”</h2>
+<p>这题最容易因为图纸信息多而看花。系统其实已经把任务缩得很小：</p>
+<div class="clue">
+只看<strong>“后场疏散通道”上方</strong>。<br>
+2003 竣工图和 2006 消防图已经按同一比例对齐。尺寸、排水管、房间名称全部不用管。
+</div>
+<p>正确操作顺序：</p>
+<ol>
+<li>至少打开一次 <strong>2003 竣工图</strong>；</li>
+<li>再打开一次 <strong>2006 消防图</strong>；</li>
+<li>拖动一次下方对照分界线；</li>
+<li>找出 2003 有、2006 没有的局部结构；</li>
+<li>切回 2003 图，直接点在那块结构上并提交。</li>
+</ol>
+<details open>
+<summary>具体该点哪里</summary>
+<p>点<strong>“后场疏散通道”上方、2003 图中带斜线并标着 <span class="answer">V-02</span> 的小区域</strong>。</p>
+</details>
+<p>如果再回看 1999 图，还能确认这块结构并不是原建筑自带，而是后来改造出现的。</p>
+<div class="route">1999：没有 → 2003：出现 V-02 → 2006：备案图里消失</div>
+<p>标记通过后，系统会开放 2026 年拆除项目 CD-2026-17 的历史结构核验记录。</p>
+</section>
+
+<section id="s8">
+<h2><small>08 / 2026 SITE</small>施工发现：二十年前那些“说不通的话”终于对上</h2>
+<p>进入住建部门的春灯拆除项目。C 区已经因为历史结构核查暂停机械拆除。</p>
+<p>施工发现页给出最终物证：</p>
+<div class="timeline">
+<div>入口坍塌层后方先发现沈荞的儿童水壶；</div>
+<div>内部较高位置随后发现鞋、书包残片、食品包装和未拆封的绿色玻璃手链；</div>
+<div>最后发现的遗骸经 DNA 比对确认为沈荞；</div>
+<div>湿鞋袜搭在较高管道上，地图铺在相对干燥的设备底座旁，最高积水线低于这些物品位置。</div>
+</div>
+<p>最关键的两条旧记录终于有了对应：</p>
+<div class="paper-slip">
+<p><b>2006-08-20 02:40</b>　工程值守本：C2 东侧返水管附近有断续异响，当班判断“疑似回流，继续抽排”。</p>
+<p><b>唐屿被发现时</b>　衣裤全湿、手掌和右膝擦伤，一直说“她还在里面”“里面还有一段”“她在高的地方”。</p>
+</div>
+<p>2026 年复核确认，这些描述与夹层位置、现场物品高度相符。</p>
+<div class="margin-note">到这里，游戏并不是在告诉你“唐屿其实是完美英雄”。它更残酷：他当年说了最接近事实的话，但错误图纸、经验判断、怕追责和一次次“那里就是墙”的确信，把这句话压了下去。</div>
+</section>
+
+<section id="s9">
+<h2><small>09 / FINALE</small>补充公开材料与真正的结尾</h2>
+<p>施工发现页最后会进入家属同意公开的补充材料。这里已经没有需要破解的大谜题，主要是把人物关系收回来。</p>
+<p>遗物中包括绿色玻璃手链、两张受潮的游乐园兑奖票，以及折得很小的园区地图。兑奖记录显示：</p>
+<div class="paper-slip">
+<b>18:24</b><br>
+儿童游客用剩余游戏券兑换绿色玻璃手链一条。摊位员工备注：她说要送姐姐，差两张券，工作人员补了。
+</div>
+<p>这和沈栀第一次笔录里“姐妹最后一次说话时正在吵架”形成了整部作品最后最难受的一次对照。</p>
+<p>继续阅读<strong>唐屿留下的信 / 夹层里的东西 / 沈栀的留言</strong>即可看完整结局。</p>
+</section>
+
+<section>
+<h2><small>FAST CHECK</small>卡关时直接看这里</h2>
+<table>
+<tr><th>冲印批次</th><td><span class="answer">SG-060819-087</span></td></tr>
+<tr><th>游客服务账号</th><td><span class="answer">KF017</span></td></tr>
+<tr><th>游客服务口令</th><td><span class="answer">200407</span></td></tr>
+<tr><th>工程关键区域</th><td><span class="answer">C-MIRROR / C 区魔镜宫后场</span></td></tr>
+<tr><th>城建档案号</th><td><span class="answer">CH-03-441-C</span></td></tr>
+<tr><th>图纸差异</th><td><span class="answer">2003 图“后场疏散通道”上方 V-02 小区域</span></td></tr>
+<tr><th>图纸操作</th><td>2003 → 2006 → 拖动对照线 → 回 2003 点 V-02</td></tr>
+<tr><th>最终去向</th><td>拆除项目 → 施工发现 → 补充公开材料</td></tr>
+</table>
+<p class="warning">如果 C 区图纸做对却没有继续推进：确认你真的打开过 2003 和 2006 两张图，并且拖过一次对照分界线；然后必须切回 2003 图再点位置。</p>
+</section>
+
+</main>
+<footer>
+《春灯闭园以后》玩家调查攻略 · 根据当前公开仓库实际主线判定与被引用页面整理。非游戏内官方页面复刻。
+</footer>
+</div>
+</body>
+</html>
